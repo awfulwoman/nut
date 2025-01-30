@@ -31,6 +31,8 @@ nutCfgFiles="ups.conf upsd.conf upsd.users"
 
 echo "*** NUT upsd startup ***"
 
+ls -alh ${nutCfgVolume}
+
 # bail out if the config volume is not mounted
 grep ${nutCfgVolume} /proc/mounts >/dev/null ||
 	{ printf "ERROR: It does not look like the config volume is mounted to %s. Have a look at the README for instructions.\n" ${nutCfgVolume}; exit; }
@@ -55,6 +57,8 @@ for cfgFile in ${nutCfgFiles}; do
 	printf "ERROR: config file '%s/%s' does not exist. You should create one, have a look at the README.\n" ${nutCfgVolume} ${cfgFile}
 	exit
 done
+
+ls -alh /usr/sbin/
 
 # # Scan for attached USB devices
 # printf "Initial scan for UP devices ...\n"
