@@ -56,6 +56,10 @@ for cfgFile in ${nutCfgFiles}; do
 	exit
 done
 
+# Scan for attached USB devices
+printf "Initial scan for UP devices ...\n"
+/usr/sbin/nut-scanner --usb_scan
+
 # initialize UPS driver
 printf "Starting up the UPS drivers ...\n"
 /usr/sbin/upsdrvctl start || { printf "ERROR on driver startup.\n"; exit; }
